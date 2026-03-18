@@ -24,6 +24,10 @@ object AlgebraicDataTypes extends App:
   def preferredDay(d: WeekDay): Boolean =
     d == WeekDay.Friday // could have used matching instead
 
+  def preferredDayMatching(d: WeekDay): Boolean = d match
+    case WeekDay.Friday => true
+    case _ => false
+
   // A LinkedList of Int
   enum IntList: // a recursive type
     case Cons(head: Int, tail: IntList)
