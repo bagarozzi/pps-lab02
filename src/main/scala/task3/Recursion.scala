@@ -26,5 +26,13 @@ object Recursion extends App:
   println(tailPower(2.0, 3)) // 8
   println(tailPower(3.0, 2)) // 9
 
-  //def digitReverse(number: Int): Int = number match
-  //  case
+  // 12345 / 10_000 = 1 -> result = result + 1
+
+  def digitReverse(number: Int): Int =
+    @tailrec
+    def iter(number: Int, result: Int): Int = number match
+      case 0 => result
+      case _ => iter(number / 10, result * 10 + (number % 10))
+    iter(number, 0)
+  println("Digit reverse (tail): ")
+  println(digitReverse(12345)) // 54321
