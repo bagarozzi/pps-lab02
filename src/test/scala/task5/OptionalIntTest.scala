@@ -21,4 +21,10 @@ class OptionalIntTest:
     val empty = OptionalInt.Empty()
     assertEquals(1, OptionalInt.orElse(empty, 1))
 
-  /** Task 5: do test for map **/
+  @Test def testEmptyMapInt(): Unit =
+    val empty = OptionalInt.Empty()
+    assertEquals(OptionalInt.Empty(), OptionalInt.mapInt(empty)(_ + 1))
+
+  @Test def testJustMapInt(): Unit =
+    val just = OptionalInt.Just(2)
+    assertEquals(OptionalInt.Just(3), OptionalInt.mapInt(just)(_ + 1))
