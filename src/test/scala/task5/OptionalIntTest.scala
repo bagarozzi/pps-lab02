@@ -28,3 +28,12 @@ class OptionalIntTest:
   @Test def testJustMapInt(): Unit =
     val just = OptionalInt.Just(2)
     assertEquals(OptionalInt.Just(3), OptionalInt.mapInt(just)(_ + 1))
+
+  @Test def testEmptyFilter(): Unit =
+    val empty = OptionalInt.Empty()
+    assertEquals(OptionalInt.Empty(), OptionalInt.filter(empty)(_ == 2))
+
+  @Test def testJustFilter(): Unit =
+    val just = OptionalInt.Just(3)
+    assertEquals(OptionalInt.Empty(), OptionalInt.filter(just)(_ > 4))
+    assertEquals(OptionalInt.Just(3), OptionalInt.filter(just)(_ > 2))
